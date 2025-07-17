@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            background-color: black;
+            color: white;
+            width: 100vw;      /* Full viewport width */
+            height: 100vh;     /* Full viewport height */
+            padding: 15px;
+            box-sizing: border-box; /* Includes padding in width/height */
+        }
+        .view-panel{
+            display: flex;
+            column-gap: 5px;
+        }
+        .view-panel .present-view{
+            width: 70%;
+            height: 85vh;
+            background-color: grey;
+            border-radius: 20px;
+        }
+        .people-view {
+    display: grid;
+    gap: 10px;
+    padding: 10px;
+    height: 85vh;
+    box-sizing: border-box;
+    border-radius: 10px;
+    overflow-y: auto;
+    background-color: #2e2e2e;
+    grid-auto-rows: 1fr;
+    place-items: center;
+}
+.people-card {
+    background-color: #f0f0f0;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    aspect-ratio: 4 / 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: #000;
+}
+
+
+/* Default fallback for 5+ */
+.people-view {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+/* 1 person - full width & height */
+.people-view:has(.people-card:nth-child(1):nth-last-child(1)) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+}
+
+/* 2 people - stacked vertically */
+.people-view:has(.people-card:nth-child(1):nth-last-child(2)) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+/* 3 people - 2 top, 1 bottom */
+.people-view:has(.people-card:nth-child(1):nth-last-child(3)) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+/* 4 people - 2x2 grid */
+.people-view:has(.people-card:nth-child(1):nth-last-child(4)) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+}
+
+
+
+        hr{
+            margin: 10px auto 0 auto;
+            width: 90%;
+            border: none; /* remove default border */
+            height: 2px;  /* set line thickness */
+            background-color: rgb(73, 73, 73); /* set line color */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="view-panel">
+            <div class="present-view">
+            </div>
+            <div class="people-view">
+                <div class="people-card">
+
+                </div>
+                <div class="people-card">
+
+                </div>
+                <div class="people-card">
+
+                </div>
+            </div>
+        </div>
+        <div>
+            <hr>
+        </div>
+    </div>
+</body>
+</html>
