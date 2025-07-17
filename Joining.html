@@ -9,21 +9,36 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" integrity="sha384-tViUnnbYAV00FLIhhi3v/dWt3Jxw4gZQcNoSCxCIFNJVCx7/D55/wXsrNIRANwdD" crossorigin="anonymous">
 </head>
 <body>
-    <div class="container mt-5">
+    <nav class="navbar navbar-white bg-white shadow-sm">
+        <div class="container-fluid">
+            <h2 class="ms-5">MeetUpz</h2>
+            <!-- <form class="d-flex">
+                <i class="bi bi-list"></i>
+            </form> -->
+        </div>
+    </nav>
+    <div class="container">
         <div class="row mt-3">
             <div class="col-sm-8 mb-4 mt-4">
-                <div class="screen bg-dark rounded w-100" style="height: 450px;">
-                    
+                <div class="screen bg-dark rounded-3 w-100 d-flex align-items-end justify-content-center" style="height: 450px;">
+                    <div class="access-btn w-100 d-flex justify-content-center mb-3 gap-5">
+                        <!-- <p class="text-white d-flex align-items-center">...</p> -->
+                        <button class="rounded-circle border-white bg-transparent border-1"><i class="bi bi-mic text-white fs-2 p-1"></i></button>
+                        <button class="rounded-circle border-white bg-transparent border-1"><i class="bi bi-camera-video text-white fs-2 p-1"></i></button>
+                    </div>
                 </div>
             </div>
-            <div class="col d-flex align-items-center">
-                <div class="option w-100">
+            <div class="col d-flex align-items-center mt-5">
+                <div class="option w-100 mt-5">
                     <h3 class="text-center">Ready to Join ?</h3>
                     <p class="text-center">No one else is here</p>
-                    <div class="button d-flex justify-content-evenly">
-                        <button type="button" class="btn btn-primary rounded-pill">Join now</button>
-                        <button type="button" class="btn shadow rounded-pill">Present</button>
+                    <div class="button d-flex justify-content-evenly gap-3">
+                        <button type="button" class="btn btn-primary rounded-pill w-50">Join now</button>
+                        <button type="button" class="btn btn-white border shadow-sm rounded-pill w-50">Present</button>
                     </div>
+                    <p class="text-center mt-5">Other joining options</p>
+                    <p class="text-center text-primary">Use Companion Mode</p>
+                    <p class="text-center text-primary">Join and use a phone for audio</p>
                 </div>
             </div>
         </div>
