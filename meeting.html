@@ -93,7 +93,7 @@
     }
     .content {
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1fr 1fr;
       margin-top: 0.7rem;
       height: 100%;
       gap: 1.5rem;
@@ -233,12 +233,6 @@
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.03);
       height: 100%;
       transition: all 0.3s ease;
-    }
-    .request-box.hidden,
-    .chat-box.hidden {
-      opacity: 0;
-      transform: scale(0.95);
-      pointer-events: none;
     }
     .request-box h4, .chat-box h4 {
       font-size: 16px;
@@ -402,9 +396,10 @@
       const rightPanel = document.getElementById('right-panel');
       const mainContainer = document.getElementById('main-container');
 
-      panel.classList.toggle("hidden");
+      // Toggle display directly
+      panel.style.display = (panel.style.display === 'none') ? 'block' : 'none';
 
-      const anyVisible = [...rightPanel.children].some(child => !child.classList.contains("hidden"));
+      const anyVisible = [...rightPanel.children].some(child => child.style.display !== 'none');
 
       if (anyVisible) {
         rightPanel.classList.remove("hidden-panel");
@@ -414,6 +409,7 @@
         mainContainer.classList.add("expanded");
       }
     }
+  </script>
   </script>
 </body>
 </html>
