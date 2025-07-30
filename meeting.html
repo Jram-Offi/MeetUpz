@@ -21,7 +21,7 @@ body {
 .meeting-container {
   display: flex;
   flex-direction: column;
-  height: 120vh;
+  height: 95vh;
   background: white;
   margin: 20px;
   border-radius: 12px;
@@ -157,7 +157,7 @@ body {
   background: #1f2937;
   border-radius: 12px;
   overflow: hidden;
-  min-height: 80%;
+  min-height: 65%;
 }
 
 .recording-indicator {
@@ -241,7 +241,7 @@ body {
 .participant-grid {
   display: flex;
   gap: 12px;
-  height: 140px;
+  height: 15%;
 }
 
 .see-more-btn {
@@ -252,7 +252,7 @@ body {
   border-radius: 6px;
   font-size: 12px;
   cursor: pointer;
-  margin-top: 8px;
+  /* margin-top: 8px; */
   transition: background-color 0.2s;
 }
 
@@ -266,7 +266,7 @@ body {
   background: #1f2937;
   border-radius: 8px;
   overflow: hidden;
-  min-width: 160px;
+  min-width: auto;
 }
 
 .participant-video.active {
@@ -305,17 +305,31 @@ body {
 }
 
 /* Right Sidebar */
-.right-sidebar {
+/* .right-sidebar {
   width: 320px;
   background: white;
   border-left: 1px solid #e5e7eb;
   display: flex;
   flex-direction: column;
+} */
+
+#rightSidebar {
+  width: 0;
+  background: white;
+  border-left: none;
+  display: flex;
+  flex-direction: column;
+  transition: width 0.3s ease;
+  overflow: hidden; /* optional: to hide content when collapsed */
 }
 
 .participants-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   border-bottom: 1px solid #e5e7eb;
   padding: 16px;
+  /* height: 95%; */
 }
 
 .section-header {
@@ -323,6 +337,7 @@ body {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 16px;
+  gap: 41px;
 }
 
 .section-header h3 {
@@ -399,6 +414,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 16px;
+  /* height: 81%; */
 }
 
 .chat-header {
@@ -490,10 +506,16 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 24px;
+  padding: 17px 24px;
   border-top: 1px solid #e5e7eb;
   background: white;
   border-radius: 0 0 12px 12px;
+}
+
+.bottom-controls .options-button{
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
 
 .control-buttons {
@@ -886,12 +908,75 @@ body {
                     </div>
                     <button class="see-more-btn" id="seeMoreBtn">See More</button>
                 </div>
+                
+                <div class="bottom-controls">
+                  <div class="options-button">
+                    <div class="control-buttons" style="position: relative;">
+                        <button class="control-btn mic-btn active" id="micBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+                                <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+                                <line x1="12" y1="19" x2="12" y2="23"/>
+                                <line x1="8" y1="23" x2="16" y2="23"/>
+                            </svg>
+                        </button>
+                        
+                        <button class="control-btn camera-btn active" id="cameraBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M23 7l-7 5 7 5V7z"/>
+                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                            </svg>
+                        </button>
+                        
+                        <button class="control-btn share-btn" id="shareBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </button>
+                        
+                        <button class="control-btn record-btn recording" id="recordBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </button>
+                        
+                        <button class="control-btn chat-btn" id="chatBtn" onclick="chat()">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                            </svg>
+                        </button>
+
+                        <button class="control-btn chat-btn" id="Add-Btn" onclick="Add_mem()">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#2563eb" stroke-width="2">
+                                <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path>
+                                <circle cx="9" cy="7" r="4"></circle>
+                                <line x1="19" y1="8" x2="19" y2="14"></line>
+                                <line x1="22" y1="11" x2="16" y2="11"></line>
+                            </svg>
+                        </button>
+                        
+                        <button class="control-btn more-btn" id="moreBtn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="1"/>
+                                <circle cx="19" cy="12" r="1"/>
+                                <circle cx="5" cy="12" r="1"/>
+                            </svg>
+                        </button>
+                        
+                    </div>
+                    <button class="end-call-btn" id="endCallBtn">End Call</button>
+                  </div>
+                </div>
+
             </div>
 
             <!-- Right Sidebar -->
             <div class="right-sidebar">
                 <!-- Participants Section -->
-                <div class="participants-section">
+                <div class="participants-section" id="participants-sec">
                     <div class="section-header">
                         <h3>Participants</h3>
                         <button class="add-participant-btn">
@@ -969,17 +1054,18 @@ body {
                 </div>
 
                 <!-- Chat Section -->
-                <div class="chat-section">
+                <div class="chat-section" id="chat-sec">
+                  <div class="chat-msg">
                     <div class="chat-header">
-                        <h3>Chats</h3>
-                        <div class="chat-tabs">
-                            <button class="chat-tab active">Group</button>
-                        </div>
-                        <button class="expand-btn">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="6 9 12 15 18 9"/>
-                            </svg>
-                        </button>
+                      <h3>Chats</h3>
+                      <div class="chat-tabs">
+                          <button class="chat-tab active">Group</button>
+                      </div>
+                      <button class="expand-btn">
+                          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <polyline points="6 9 12 15 18 9"/>
+                          </svg>
+                      </button>
                     </div>
                     
                     <div class="chat-messages">
@@ -1017,6 +1103,19 @@ body {
                             </div>
                         </div>
                     </div>
+                  </div>
+                  
+                  <div class="bottom-controls">
+                    <div class="chat-input-container">
+                      <input type="text" placeholder="Type Something..." class="chat-input" id="chatInput">
+                      <button class="send-btn" id="sendBtn">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                              <line x1="22" y1="2" x2="11" y2="13"/>
+                              <polygon points="22,2 15,22 11,13 2,9 22,2"/>
+                          </svg>
+                      </button>
+                    </div>
+                  </div>
                 </div>
             </div>
         </div>
@@ -1033,564 +1132,58 @@ body {
                 </div>
             </div>
         </div>
-
-        <!-- Bottom Controls -->
-        <div class="bottom-controls">
-            <div class="control-buttons" style="position: relative;">
-                <button class="control-btn mic-btn active" id="micBtn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-                        <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-                        <line x1="12" y1="19" x2="12" y2="23"/>
-                        <line x1="8" y1="23" x2="16" y2="23"/>
-                    </svg>
-                </button>
-                
-                <button class="control-btn camera-btn active" id="cameraBtn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M23 7l-7 5 7 5V7z"/>
-                        <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
-                    </svg>
-                </button>
-                
-                <button class="control-btn share-btn" id="shareBtn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                        <line x1="8" y1="21" x2="16" y2="21"/>
-                        <line x1="12" y1="17" x2="12" y2="21"/>
-                    </svg>
-                </button>
-                
-                <button class="control-btn record-btn recording" id="recordBtn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="10"/>
-                        <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                </button>
-                
-                <button class="control-btn chat-btn" id="chatBtn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-                    </svg>
-                </button>
-                
-                <button class="control-btn more-btn" id="moreBtn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="1"/>
-                        <circle cx="19" cy="12" r="1"/>
-                        <circle cx="5" cy="12" r="1"/>
-                    </svg>
-                </button>
-                
-                <!-- Options menu -->
-                <div class="options-menu" id="optionsMenu">
-                    <button class="option-item" id="addParticipantOption">Add Participants</button>
-                    <button class="option-item" id="viewParticipantsOption">View Participants</button>
-                </div>
-            </div>
-            
-            <button class="end-call-btn" id="endCallBtn">End Call</button>
-            
-            <div class="chat-input-container">
-                <input type="text" placeholder="Type Something..." class="chat-input" id="chatInput">
-                <button class="send-btn" id="sendBtn">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <line x1="22" y1="2" x2="11" y2="13"/>
-                        <polygon points="22,2 15,22 11,13 2,9 22,2"/>
-                    </svg>
-                </button>
-            </div>
-        </div>
     </div>
 
-    <script>
-class MeetingUI {
-  constructor() {
-    this.isRecording = true
-    this.recordingTime = 24 * 60 + 1 + 45 / 60 // 24:01:45 in minutes
-    this.allParticipants = [
-      { name: "Adam Joseph", micOn: true, cameraOn: true, role: "Moderator" },
-      { name: "Dianne Russell", micOn: true, cameraOn: false },
-      { name: "Guy Hawkins", micOn: false, cameraOn: false },
-      { name: "Kathryn Murphy", micOn: false, cameraOn: true },
-      { name: "Cassie Jung", micOn: false, cameraOn: true },
-      { name: "Alice Wong", micOn: true, cameraOn: true },
-      { name: "Theresa Webb", micOn: true, cameraOn: true },
-      { name: "Christian Wong", micOn: false, cameraOn: true },
-      { name: "Sarah Johnson", micOn: true, cameraOn: false },
-      { name: "Mike Chen", micOn: false, cameraOn: true },
-      { name: "Lisa Wang", micOn: true, cameraOn: true },
-      { name: "David Brown", micOn: false, cameraOn: false },
-      { name: "Emma Davis", micOn: true, cameraOn: true },
-    ]
-    this.isFullscreen = false
-    this.isSpeaking = false
-    this.init()
-  }
+  <script>
+    var chatVisible = false;
+var memVisible = false;
 
-  init() {
-    console.log('Initializing MeetingUI...')
-    this.bindEvents()
-    this.startRecordingTimer()
-  }
+function updateSidebar() {
+  const sidebar = document.getElementById('rightSidebar');
 
-  bindEvents() {
-    console.log('Binding events...')
-    
-    // See more button
-    const seeMoreBtn = document.getElementById("seeMoreBtn")
-    if (seeMoreBtn) {
-      seeMoreBtn.addEventListener("click", () => {
-        console.log('See more clicked')
-        this.showAllParticipants()
-      })
-    }
-
-    // Menu buttons with proper IDs
-    const micBtn = document.getElementById("micBtn")
-    if (micBtn) {
-      micBtn.addEventListener("click", () => {
-        console.log('Mic clicked')
-        this.toggleMic()
-      })
-    }
-
-    const cameraBtn = document.getElementById("cameraBtn")
-    if (cameraBtn) {
-      cameraBtn.addEventListener("click", () => {
-        console.log('Camera clicked')
-        this.toggleCamera()
-      })
-    }
-
-    const shareBtn = document.getElementById("shareBtn")
-    if (shareBtn) {
-      shareBtn.addEventListener("click", () => {
-        console.log('Share clicked')
-        this.toggleShare()
-      })
-    }
-
-    const recordBtn = document.getElementById("recordBtn")
-    if (recordBtn) {
-      recordBtn.addEventListener("click", () => {
-        console.log('Record clicked')
-        this.toggleRecording()
-      })
-    }
-
-    const chatBtn = document.getElementById("chatBtn")
-    if (chatBtn) {
-      chatBtn.addEventListener("click", () => {
-        console.log('Chat clicked')
-        this.toggleChat()
-      })
-    }
-
-    const endCallBtn = document.getElementById("endCallBtn")
-    if (endCallBtn) {
-      endCallBtn.addEventListener("click", () => {
-        console.log('End call clicked')
-        this.endCall()
-      })
-    }
-
-    // Chat functionality
-    const chatInput = document.getElementById("chatInput")
-    const sendBtn = document.getElementById("sendBtn")
-
-    if (sendBtn && chatInput) {
-      sendBtn.addEventListener("click", () => {
-        console.log('Send clicked')
-        this.sendMessage(chatInput.value)
-        chatInput.value = ""
-      })
-
-      chatInput.addEventListener("keypress", (e) => {
-        if (e.key === "Enter") {
-          console.log('Enter pressed in chat')
-          this.sendMessage(chatInput.value)
-          chatInput.value = ""
-        }
-      })
-    }
-
-    // Add participant
-    const addParticipantBtn = document.querySelector(".add-participant-btn")
-    if (addParticipantBtn) {
-      addParticipantBtn.addEventListener("click", () => {
-        console.log('Add participant clicked')
-        this.addParticipant()
-      })
-    }
-
-    // Fullscreen button
-    const fullscreenBtn = document.querySelector(".fullscreen-btn")
-    if (fullscreenBtn) {
-      fullscreenBtn.addEventListener("click", () => {
-        console.log('Fullscreen clicked')
-        this.toggleFullscreen()
-      })
-    }
-
-    // Audio level button
-    const audioLevelBtn = document.querySelector(".audio-level-btn")
-    if (audioLevelBtn) {
-      audioLevelBtn.addEventListener("click", () => {
-        console.log('Audio level clicked')
-        this.toggleSpeaking()
-      })
-    }
-
-    // More options button
-    const moreBtn = document.getElementById("moreBtn")
-    if (moreBtn) {
-      moreBtn.addEventListener("click", (e) => {
-        e.stopPropagation()
-        console.log('More options clicked')
-        this.toggleOptionsMenu()
-      })
-    }
-
-    // Options menu items
-    const addParticipantOption = document.getElementById("addParticipantOption")
-    if (addParticipantOption) {
-      addParticipantOption.addEventListener("click", () => {
-        console.log('Add participant option clicked')
-        this.showAddParticipant()
-      })
-    }
-
-    const viewParticipantsOption = document.getElementById("viewParticipantsOption")
-    if (viewParticipantsOption) {
-      viewParticipantsOption.addEventListener("click", () => {
-        console.log('View participants option clicked')
-        this.showAllParticipants()
-      })
-    }
-
-    // Close modal
-    const closeModal = document.getElementById("closeModal")
-    if (closeModal) {
-      closeModal.addEventListener("click", () => {
-        console.log('Close modal clicked')
-        this.closeParticipantsModal()
-      })
-    }
-
-    // Close options menu when clicking outside
-    document.addEventListener("click", () => {
-      this.closeOptionsMenu()
-    })
-
-    // Close modal when clicking outside
-    const participantsModal = document.getElementById("participantsModal")
-    if (participantsModal) {
-      participantsModal.addEventListener("click", (e) => {
-        if (e.target.id === "participantsModal") {
-          this.closeParticipantsModal()
-        }
-      })
-    }
-  }
-
-  toggleMic() {
-    const micBtn = document.getElementById("micBtn")
-    micBtn.classList.toggle("muted")
-
-    if (micBtn.classList.contains("muted")) {
-      micBtn.style.background = "#ef4444"
-      micBtn.innerHTML = `
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="1" y1="1" x2="23" y2="23"/>
-          <path d="M9 9v3a3 3 0 0 0 5.12 2.12M15 9.34V4a3 3 0 0 0-5.94-.6"/>
-          <path d="M17 16.95A7 7 0 0 1 5 12v-2m14 0v2a7 7 0 0 1-.11 1.23"/>
-          <line x1="12" y1="19" x2="12" y2="23"/>
-          <line x1="8" y1="23" x2="16" y2="23"/>
-        </svg>
-      `
-      this.showNotification("Microphone muted")
-    } else {
-      micBtn.style.background = "#2563eb"
-      micBtn.innerHTML = `
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-          <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-          <line x1="12" y1="19" x2="12" y2="23"/>
-          <line x1="8" y1="23" x2="16" y2="23"/>
-        </svg>
-      `
-      this.showNotification("Microphone unmuted")
-    }
-  }
-
-  toggleCamera() {
-    const cameraBtn = document.getElementById("cameraBtn")
-    cameraBtn.classList.toggle("disabled")
-
-    if (cameraBtn.classList.contains("disabled")) {
-      cameraBtn.style.background = "#ef4444"
-      this.showNotification("Camera disabled")
-    } else {
-      cameraBtn.style.background = "#2563eb"
-      this.showNotification("Camera enabled")
-    }
-  }
-
-  toggleShare() {
-    const shareBtn = document.getElementById("shareBtn")
-    shareBtn.classList.toggle("sharing")
-
-    if (shareBtn.classList.contains("sharing")) {
-      shareBtn.style.background = "#10b981"
-      this.showNotification("Screen sharing started")
-    } else {
-      shareBtn.style.background = "#f3f4f6"
-      this.showNotification("Screen sharing stopped")
-    }
-  }
-
-  toggleRecording() {
-    const recordBtn = document.getElementById("recordBtn")
-    this.isRecording = !this.isRecording
-
-    if (this.isRecording) {
-      recordBtn.classList.add("recording")
-      this.showNotification("Recording started")
-    } else {
-      recordBtn.classList.remove("recording")
-      this.showNotification("Recording stopped")
-    }
-  }
-
-  toggleChat() {
-    this.showNotification("Chat panel toggled")
-  }
-
-  endCall() {
-    if (confirm("Are you sure you want to end the call?")) {
-      this.showNotification("Call ended")
-    }
-  }
-
-  sendMessage(message) {
-    if (!message.trim()) return
-
-    const chatMessages = document.querySelector(".chat-messages")
-    const messageDiv = document.createElement("div")
-    messageDiv.className = "chat-message"
-
-    const now = new Date()
-    const timeString = now.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" })
-
-    messageDiv.innerHTML = `
-      <img src="https://ui-avatars.com/api/?name=You&background=2563eb&color=fff&size=24" alt="You" class="message-avatar">
-      <div class="message-content">
-        <div class="message-header">
-          <span class="sender-name">You</span>
-          <span class="message-time">${timeString}</span>
-        </div>
-        <p>${message}</p>
-      </div>
-    `
-
-    chatMessages.appendChild(messageDiv)
-    chatMessages.scrollTop = chatMessages.scrollHeight
-
-    this.showNotification("Message sent")
-  }
-
-  startRecordingTimer() {
-    if (this.isRecording) {
-      setInterval(() => {
-        this.recordingTime += 1 / 60 // Add 1 second
-        this.updateRecordingDisplay()
-      }, 1000)
-    }
-  }
-
-  updateRecordingDisplay() {
-    const hours = Math.floor(this.recordingTime / 60)
-    const minutes = Math.floor(this.recordingTime % 60)
-    const seconds = Math.floor((this.recordingTime % 1) * 60)
-
-    const timeString = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${seconds.toString().padStart(2, "0")}`
-    const recordingIndicator = document.querySelector(".recording-indicator span")
-    if (recordingIndicator) {
-      recordingIndicator.textContent = timeString
-    }
-  }
-
-  addParticipant() {
-    const email = prompt("Enter participant email:")
-    if (email && this.isValidEmail(email)) {
-      this.showNotification(`Invitation sent to ${email}`)
-    } else if (email) {
-      this.showNotification("Please enter a valid email address")
-    }
-  }
-
-  isValidEmail(email) {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
-  }
-
-  showNotification(message) {
-    console.log('Notification:', message)
-    const notification = document.createElement("div")
-    notification.style.cssText = `
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #2563eb;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: 500;
-      z-index: 1000;
-      transform: translateX(100%);
-      transition: transform 0.3s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    `
-    notification.textContent = message
-
-    document.body.appendChild(notification)
-
-    setTimeout(() => {
-      notification.style.transform = "translateX(0)"
-    }, 100)
-
-    setTimeout(() => {
-      notification.style.transform = "translateX(100%)"
-      setTimeout(() => {
-        if (document.body.contains(notification)) {
-          document.body.removeChild(notification)
-        }
-      }, 300)
-    }, 3000)
-  }
-
-  showAllParticipants() {
-    console.log('Showing all participants')
-    const modal = document.getElementById("participantsModal")
-    const participantsList = document.getElementById("allParticipantsList")
-
-    if (!modal || !participantsList) {
-      console.error('Modal or participants list not found')
-      return
-    }
-
-    // Clear existing content
-    participantsList.innerHTML = ""
-
-    // Add all participants
-    this.allParticipants.forEach((participant) => {
-      const participantCard = document.createElement("div")
-      participantCard.className = "participant-card"
-
-      participantCard.innerHTML = `
-        <img src="https://ui-avatars.com/api/?name=${encodeURIComponent(participant.name)}&background=random&color=fff&size=60" alt="${participant.name}">
-        <div class="name">${participant.name}</div>
-        <div class="status">${participant.role || "Participant"}</div>
-        <div class="controls">
-          <span style="color: ${participant.micOn ? "#10b981" : "#ef4444"}">
-            ${participant.micOn ? "🎤" : "🔇"}
-          </span>
-          <span style="color: ${participant.cameraOn ? "#10b981" : "#ef4444"}">
-            ${participant.cameraOn ? "📹" : "📷"}
-          </span>
-        </div>
-      `
-
-      participantsList.appendChild(participantCard)
-    })
-
-    modal.classList.add("visible")
-  }
-
-  closeParticipantsModal() {
-    console.log('Closing participants modal')
-    const modal = document.getElementById("participantsModal")
-    if (modal) {
-      modal.classList.remove("visible")
-    }
-  }
-
-  toggleOptionsMenu() {
-    console.log('Toggling options menu')
-    const optionsMenu = document.getElementById("optionsMenu")
-    if (optionsMenu) {
-      optionsMenu.classList.toggle("visible")
-    }
-  }
-
-  closeOptionsMenu() {
-    const optionsMenu = document.getElementById("optionsMenu")
-    if (optionsMenu) {
-      optionsMenu.classList.remove("visible")
-    }
-  }
-
-  showAddParticipant() {
-    this.closeOptionsMenu()
-    const email = prompt("Enter participant email:")
-    if (email && this.isValidEmail(email)) {
-      this.showNotification(`Invitation sent to ${email}`)
-    } else if (email) {
-      this.showNotification("Please enter a valid email address")
-    }
-  }
-
-  toggleFullscreen() {
-    this.isFullscreen = !this.isFullscreen
-
-    if (this.isFullscreen) {
-      if (document.documentElement.requestFullscreen) {
-        document.documentElement.requestFullscreen()
-      } else if (document.documentElement.webkitRequestFullscreen) {
-        document.documentElement.webkitRequestFullscreen()
-      } else if (document.documentElement.msRequestFullscreen) {
-        document.documentElement.msRequestFullscreen()
-      }
-      this.showNotification("Entered fullscreen mode")
-    } else {
-      if (document.exitFullscreen) {
-        document.exitFullscreen()
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen()
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen()
-      }
-      this.showNotification("Exited fullscreen mode")
-    }
-  }
-
-  toggleSpeaking() {
-    const audioBtn = document.querySelector(".audio-level-btn")
-    this.isSpeaking = !this.isSpeaking
-
-    if (this.isSpeaking) {
-      audioBtn.classList.add("speaking")
-      this.showNotification("Speaking indicator on")
-
-      // Auto turn off after 3 seconds
-      setTimeout(() => {
-        audioBtn.classList.remove("speaking")
-        this.isSpeaking = false
-      }, 3000)
-    } else {
-      audioBtn.classList.remove("speaking")
-      this.showNotification("Speaking indicator off")
-    }
+  if (!chatVisible && !memVisible) {
+    sidebar.style.width = '0';
+    sidebar.style.borderLeft = 'none';
+  } else {
+    sidebar.style.width = '320px';
+    sidebar.style.borderLeft = '1px solid #e5e7eb';
   }
 }
 
-// Initialize the meeting UI when the page loads
-document.addEventListener("DOMContentLoaded", () => {
-  console.log('DOM loaded, initializing MeetingUI')
-  new MeetingUI()
-})
-    </script>
+function chat() {
+  const chatPanel = document.getElementById('chat-sec');
+  const memPanel = document.getElementById('participants-sec');
+
+  // If chat is already visible, toggle it off
+  if (chatVisible) {
+    chatPanel.style.display = 'none';
+    chatVisible = false;
+  } else {
+    chatPanel.style.display = 'block';
+    chatVisible = true;
+  }
+
+  updateSidebar();
+}
+
+function Add_mem() {
+  const chatPanel = document.getElementById('chat-sec');
+  const memPanel = document.getElementById('participants-sec');
+
+  // If mem is already visible, toggle it off
+  if (memVisible) {
+    memPanel.style.display = 'none';
+    memVisible = false;
+  } else {
+    memPanel.style.display = 'block';
+    memVisible = true;
+
+  }
+
+  updateSidebar();
+}
+
+
+  </script>
 </body>
 </html>
